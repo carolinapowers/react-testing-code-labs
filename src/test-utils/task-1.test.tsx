@@ -1,18 +1,21 @@
 
-import * as espree from "espree";
-
+import { ast, includes } from '@phenomnomnominal/tsquery';
 import { readFile } from "../test-utils/helpers";
-
 
 
 test('task @1.1.1', () => {
   const file = readFile("src/App.test.tsx"); 
 
-  const ast = espree.parse(file, {sourceType: "module", ecmaVersion: 2015, ecmaFeatures: {jsx: true}});
+  const astTs = ast(file, "tsx");
 
-  console.log(ast);
-  // render(<App />);
-  // const linkElement = screen.queryByText(/learn react/i);
-  // expect(linkElement, "My great message").not.toBeInTheDocument();
+  const hasItFunction = includes(astTs, 'Identifier[name="it"]');
+  expect(hasItFunction, "React Test Library also allows for `it` blocks however the instruction given asks for a `test` block").toBe(true);
+
+  // const hasTestFunction = includes(astTs, 'Identifier[name="test"]');
+  // expect(hasTestFunction).toBe(true);
+
+  // const nodes = query(astTs, 'Identifier[name="test"]');
+  // expect(nodes.length).toBe(1);
+  // console.log('Nodes:', nodes);
 });
 
