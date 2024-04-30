@@ -6,7 +6,7 @@ class Reporter {
 
   onRunComplete(_contexts, results) {
     const { testResults } = results;
-
+    
     if (testResults.length > 0) {
       const { failureMessage } = testResults[0];
       
