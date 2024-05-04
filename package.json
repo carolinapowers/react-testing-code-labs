@@ -18,10 +18,12 @@
     "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test",
-    "eject": "react-scripts eject",
-    "task": "CI=true react-scripts test --reporters='<rootDir>/src/tests/reporter.js' --noStackTrace --silent",
-    "test:bail": "CI=true npm t --silent -- --watchAll=false --json --passWithNoTests",
-    "test:silent": "CI=true npm t --silent -- --watchAll=false"
+    "test:blind": "npm test -- --watchAll=false",
+    "test:ci": "CI=true npm tes",
+    "test:bail": "CI=true npm t --silent -- --bail",
+    "test:json": "CI=true npm t --silent -- --watchAll=false --json --passWithNoTests",
+    "test:silent": "CI=true npm t --silent -- --watchAll=false",
+    "task": "CI=true react-scripts test --reporters='<rootDir>/src/tests/reporter.js' --noStackTrace --silent --openHandlesTimeout=0 --no-cache"
   },
   "eslintConfig": {
     "extends": [

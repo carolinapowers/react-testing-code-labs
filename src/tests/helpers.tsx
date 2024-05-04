@@ -9,11 +9,13 @@ export const readFile = (filePath: string): string => {
     throw new Error("The expected file does not exist");
   }
 
-  const file = fs.readFileSync(absolutePath, "utf8");
-  console.log(`Test file exists:`, true);
-
-  return file;
+  return fs.readFileSync(absolutePath, "utf8");
 };
+
+export const packageJsonScripts = (file: string): string => {
+  const json = JSON.parse(file);
+  return json.scripts;
+}
 
 
 
