@@ -6,10 +6,13 @@ class Reporter {
 
   onRunComplete(_contexts, results) {
     const { testResults } = results;
+
+    if(testResults[0].numFailingTests === 0) {
+      console.log("All tests passed successfully!")
+    }
     
     if (testResults.length > 0) {
       const { failureMessage } = testResults[0];
-      
       if (failureMessage != null) {
         const message = failureMessage
           .split(/\n\n/)[1] // split the message and get the message
@@ -19,7 +22,8 @@ class Reporter {
           .join("\n"); // join the array of strings with a newline character
 
         console.log(message); 
-      }
+      } 
+      
     }
   }
 }
