@@ -12,9 +12,14 @@ export const readFile = (filePath: string): string => {
   return fs.readFileSync(absolutePath, "utf8");
 };
 
-export const packageJsonScripts = (file: string): string => {
-  const json = JSON.parse(file);
-  return json.scripts;
+export const packageJsonScripts = (file: string): string | {} => {
+  try {
+    const json = JSON.parse(file);
+    return json.scripts;
+  } catch (error) {
+    console.error("Error parsing JSON:", error);
+    return {};
+  }
 }
 
 
