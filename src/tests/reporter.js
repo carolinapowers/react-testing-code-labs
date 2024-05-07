@@ -7,7 +7,7 @@ class Reporter {
   onRunComplete(_contexts, results) {
     const { testResults } = results;
 
-    if(testResults[0].numFailingTests === 0) {
+    if(testResults[0].numFailingTests === 0 && testResults[0].numPendingTests === 0) {
       console.log("All tests passed successfully!")
     }
     
