@@ -18,11 +18,12 @@
     "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test",
-    "test:blind": "npm test -- --watchAll=false",
+    "jest:test": "npm test -- --watchAll=false",
     "test:ci": "CI=true npm test",
-    "test:json": "npm test -- --watchAll=false --json --outputFile=results.json",
-    "test:ignore": "npm test -- --watchAll=false --testPathIgnorePatterns='<rootDir>/src/tests/.*.test.ts'",
-    "task": "CI=true react-scripts test --reporters='<rootDir>/src/tests/reporter.js' --noStackTrace --silent --openHandlesTimeout=0 --no-cache"
+    "test:ignore": "npm test -- --watchAll=false --testPathIgnorePatterns='<rootDir>/src/tests/.*.test.tsx'",
+    "test:name:pattern": "npm test -- --watchAll=false --testNamePattern='name pattern correctly'",
+    "task": "CI=true npm test -- --reporters='<rootDir>/src/tests/reporter.js' --noStackTrace --silent --openHandlesTimeout=0 --no-cache",
+    "test:json": "npm test -- --watchAll=false --json --outputFile=results.json"
   },
   "eslintConfig": {
     "extends": [
