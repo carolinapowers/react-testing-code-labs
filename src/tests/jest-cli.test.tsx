@@ -3,7 +3,7 @@ import { packageJsonScripts, readFile } from "./helpers";
 const file = readFile("package.json"); 
 const scripts = packageJsonScripts(file) as any;
 
-// npm run -s task -- --testNamePattern=@2.1
+// npm run -s task -- src/tests/jest-cli.test.tsx --testNamePattern=@2.1
 describe("Jest CLI task @2.1", () => {
   test('jest:test should exist', () => {
     expect(scripts['jest:test'], 'Make sure you are creating the script named "jest:test"').toBeDefined();
@@ -14,7 +14,7 @@ describe("Jest CLI task @2.1", () => {
   });
 });
 
-// npm run -s task -- --testNamePattern=@2.2
+// npm run -s task -- src/tests/jest-cli.test.tsx --testNamePattern=@2.2
 describe("Jest CLI task @2.2", () => {
   test('test:ci should exist', () => {
     expect(scripts['test:ci'], 'Make sure you are creating the script named "test:ci"').toBeDefined();
@@ -25,7 +25,7 @@ describe("Jest CLI task @2.2", () => {
   });
 });
 
-// npm run -s task -- --testNamePattern=@2.3
+// npm run -s task -- src/tests/jest-cli.test.tsx --testNamePattern=@2.3
 describe("Jest CLI task @2.3", () => {
   test('test:ignore should exist', () => {
     expect(scripts['test:ignore'], 'Make sure you are creating the script named "test:ignore"').toBeDefined();
@@ -36,7 +36,7 @@ describe("Jest CLI task @2.3", () => {
   });
 });
 
-// npm run -s task -- --testNamePattern=@2.4
+// npm run -s task -- src/tests/jest-cli.test.tsx --testNamePattern=@2.4
 describe("Jest CLI task @2.4", () => {
   test('test:name:pattern should exist', () => {
     expect(scripts['test:name:pattern'], 'Make sure you are creating the script named "test:name:pattern"').toBeDefined();

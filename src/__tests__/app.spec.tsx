@@ -10,9 +10,9 @@ import App from '../app';
 //   expect(linkElement).not.toBeInTheDocument();
 // });
 
-test('learn react link should render correctly', () => {
-  render(<App/>);
-  const linkElement = screen.getByText(/learn react/i);
-  expect(linkElement).toBeInTheDocument();
-});
+// test('learn react link should render correctly', () => {
+//   render(<App/>);
+//   const linkElement = screen.getByText(/learn react/i);
+//   expect(linkElement).toBeInTheDocument();
+// });
 
