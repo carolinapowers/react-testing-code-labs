@@ -23,3 +23,9 @@ test("hello world", function () {
   });
   expect(linkElement).toBeInTheDocument();
 });
+
+test("h2 element should not be in the document", () => {
+  render(<App />);
+  const h2Element = screen.queryByText("React Testing Library Best Practices");
+  expect(h2Element).not.toBeInTheDocument();
+});
