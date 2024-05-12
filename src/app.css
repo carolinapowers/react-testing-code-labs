@@ -1,8 +1,8 @@
 .app {
   background-color: #282c34;
   min-height: 100vh;
-  font-size: calc(10px + 2vmin);
-  color: white;
+  font-size: calc(6px + 2vmin);
+  color: rgb(226, 226, 241);
 }
 
 .app-logo {
@@ -16,8 +16,6 @@
   align-items: center;
   justify-content: center;
   min-height: 20vh;
-  font-size: calc(10px + 2vmin);
-  color: white;
 }
 
 .app a {
@@ -35,16 +33,21 @@
   margin-top: 1em;
 }
 
-.app-more {
+.app-main {
   font-size: 0.8em;
   margin-top: 1em;
   padding: 1em 5em;
 }
 
-.app-more ul li {
+.app-main ul li {
   margin-bottom: 1em;
 }
 
+code {
+  font-size: 0.8em;
+  background-color: black;
+  padding: 0.1em 0.3em;
+}
 @media (prefers-reduced-motion: no-preference) {
   .app-logo {
     animation: app-logo-spin infinite 20s linear;
