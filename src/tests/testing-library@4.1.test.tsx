@@ -5,7 +5,7 @@ const file = readFile("src/__tests__/app.spec.tsx");
 const astTs = ast(file, "tsx");
 
 // npm run -s task -- src/tests/testing-library@4.1.test.tsx
-describe("React Testing Library", () => {
+describe("Guiding Principles", () => {
   test("screen.getByText is not present @4.1", () => {
     const includesScreen = includes(
       astTs,

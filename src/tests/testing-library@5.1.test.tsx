@@ -5,7 +5,7 @@ const file = readFile("src/__tests__/app.spec.tsx");
 const astTs = ast(file, "tsx");
 
 // npm run -s task -- src/tests/testing-library@5.1.test.tsx
-describe("React Testing Library", () => {
+describe("Queries", () => {
   test("testing block should exist @5.1", () => {
     const hasTestFunction = includes(astTs, 'Identifier[name="test"]');
     const hasItFunction = includes(astTs, 'Identifier[name="it"]');
@@ -37,23 +37,6 @@ describe("React Testing Library", () => {
       result,
       "Make sure you are rendering the <App/> component with render(<App/>);"
     ).toBe(true);
-  });
-
-  test("screen.getByText is not being used @5.2", () => {
-    const includesScreen = includes(
-      astTs,
-      'Block CallExpression Identifier[name="screen"]'
-    );
-    const includesGetByText = includes(
-      astTs,
-      'Block CallExpression Identifier[name="getByText"]'
-    );
-
-    const result = includesScreen && includesGetByText;
-    expect(
-      result,
-      'Use React Testing Library screen.queryByText() to find the h2 element with a text of "React Testing Library Best Practices"'
-    ).toBe(false);
   });
 
   test("screen.queryByText is being used @5.2", () => {
@@ -135,32 +118,57 @@ describe("React Testing Library", () => {
       "Make sure you are calling toBeInTheDocument() to assert that an element is in the document"
     ).toBe(true);
   });
+
+  test("Jest expect should be used with h2Element and not toBeInTheDocument @5.2", () => {
+    const includesExpect = includes(
+      astTs,
+      'Block PropertyAccessExpression CallExpression Identifier[name="expect"] '
+    );
+    const includesH2Element = includes(
+      astTs,
+      'Block PropertyAccessExpression CallExpression Identifier[name="h2Element"]'
+    );
+
+    const includesNot = includes(
+      astTs,
+      'Block CallExpression PropertyAccessExpression PropertyAccessExpression Identifier[name="not"]'
+    );
+
+    const result = includesExpect && includesH2Element && includesNot;
+
+    expect(
+      result,
+      "Make sure you are asserting that the h2Element is NOT in the document with expect(h2Element).not.toBeInTheDocument();"
+    ).toBe(true);
+  });
+
+  test("Jest expect should be used with h2Element and toBeInTheDocument @5.2", () => {
+    const includesExpect = includes(
+      astTs,
+      'Block PropertyAccessExpression CallExpression Identifier[name="expect"] '
+    );
+
+    const includesH2Element = includes(
+      astTs,
+      'Block PropertyAccessExpression CallExpression Identifier[name="h2Element"]'
+    );
+
+    const includesToBeInTheDocument = includes(
+      astTs,
+      'Block CallExpression Identifier[name="toBeInTheDocument"]'
+    );
+
+    const result =
+      includesExpect && includesH2Element && includesToBeInTheDocument;
+
+    expect(
+      result,
+      "This is what your assertion should look like: expect(h2Element).not.toBeInTheDocument();"
+    ).toBe(true);
+  });
 });
 
-test("Jest expect should be used with h2Element and toBeInTheDocument @5.2", () => {
-  const includesExpect = includes(
-    astTs,
-    'Block PropertyAccessExpression CallExpression Identifier[name="expect"] '
-  );
-
-  const includesH2Element = includes(
-    astTs,
-    'Block PropertyAccessExpression CallExpression Identifier[name="h2Element"]'
-  );
-
-  const includesToBeInTheDocument = includes(
-    astTs,
-    'Block CallExpression Identifier[name="toBeInTheDocument"]'
-  );
-
-  const result =
-    includesExpect && includesH2Element && includesToBeInTheDocument;
-
-  expect(
-    result,
-    "This is what your assertion should look like: expect(h2Element).toBeInTheDocument();"
-  ).toBe(true);
-});
+// add test to check Jest expect should be used with h2Element and not toBeInTheDocument @5.2
 
 // ./task-runner.sh src/tests/testing-library@5.1.test.tsx
 

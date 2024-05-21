@@ -17,13 +17,7 @@
   "scripts": {
     "start": "react-scripts start",
     "build": "react-scripts build",
-    "test": "react-scripts test",
-    "jest:test": "npm test -- --watchAll=false",
-    "test:ci": "CI=true npm test",
-    "test:ignore": "npm test -- --watchAll=false --testPathIgnorePatterns='<rootDir>/src/tests/.*.test.tsx'",
-    "test:name:pattern": "npm test -- --watchAll=false --testNamePattern='name pattern correctly'",
-    "task": "CI=true npm test -- --reporters='<rootDir>/src/tests/reporter.js' --noStackTrace --silent --openHandlesTimeout=0 --no-cache",
-    "test:json": "npm test -- --watchAll=false --json --outputFile=results.json"
+    "test": "react-scripts test"
   },
   "eslintConfig": {
     "extends": [
